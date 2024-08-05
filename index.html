@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARAJE VEUXOR</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest"> <!-- Línea para el favicon -->
+</head>
+<body>
+    <header>
+        <h1>Garaje Veuxor</h1>
+    </header>
+    
+    <main>
+        <section id="registration">
+            <h2>Registro de Vehículo</h2>
+            <form id="vehicleForm">
+                <label for="datetime">Fecha y Hora:</label>
+                <input type="datetime-local" id="datetime" name="datetime" required>
+                
+                <label for="brand">Marca:</label>
+                <input type="text" id="brand" name="brand" required>
+                
+                <label for="model">Modelo:</label>
+                <input type="text" id="model" name="model" required>
+
+                <label for="clave">Clave:</label>
+                <input type="text" id="clave" name="clave" required>
+                
+                <label for="plate">Placa:</label>
+                <input type="text" id="plate" name="plate" required>
+                
+                <label for="color">Color:</label>
+                <input type="text" id="color" name="color" required>
+                
+                <label for="owner">Propietario:</label>
+                <input type="text" id="owner" name="owner" required>
+
+                <label for="habitacion">Habitación:</label>
+                <input type="text" id="habitacion" name="habitacion" required>
+                
+                <label for="garage">Garaje:</label>
+                <select id="garage" name="garage" required>
+                    <option value="P1">P1</option>
+                    <option value="P2">P2</option>
+                </select>
+                
+                <label for="observations">Observaciones:</label>
+                <textarea id="observations" name="observations"></textarea>
+                
+                <!-- Campo de carga de imagen con atributo capture="camera" -->
+                <label for="image">Imagen:</label>
+                <input type="file" id="image" name="image" accept="image/*" capture="camera" multiple required>
+                
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+        
+        <section id="history">
+            <h2>Historial de Vehículos Registrados</h2>
+            <button id="toggleHistoryBtn">Mostrar Historial</button>
+            <div id="historyContent" style="display: none;">
+                <div id="historyCards">
+                    <!-- Las tarjetas de registros se agregarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

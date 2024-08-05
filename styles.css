@@ -1,0 +1,145 @@
+/* Variables de colores */
+:root {
+    --primary-bg-color: #1f1f1f; /* Gris muy oscuro */
+    --secondary-bg-color: #2a2a2a; /* Gris oscuro */
+    --text-color: #e0e0e0; /* Gris claro */
+    --accent-color: #ffa500; /* Naranja dorado */
+    --button-hover-color: #cc8400; /* Naranja dorado más oscuro */
+    --border-color: #444444; /* Bordes gris intermedio */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+}
+
+h1, h2 {
+    color: var(--accent-color);
+}
+
+main {
+    margin: 20px;
+    background-color: var(--secondary-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin: 5px 0 2px;
+    color: var(--text-color);
+}
+
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: var(--secondary-bg-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.history-card {
+    background-color: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+}
+
+.history-card div {
+    margin-bottom: 5px;
+}
+
+.history-card img {
+    width: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.fullscreen-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px 0;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    form input, form select, form textarea, form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .history-card img {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+
+    main {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    form input, form select, form textarea, form button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .history-card img {
+        width: 30px;
+    }
+}
