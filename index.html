@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARAJE VEUXOR</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest"> <!-- Línea para el favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="iconos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="iconos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="iconos/favicon-16x16.png">
+    <link rel="manifest" href="iconos/site.webmanifest"> <!-- Línea para el favicon -->
 </head>
 <body>
     <header>
-        <h1>Garaje Veuxor</h1>
+        <h1>GARAJE VEUXOR</h1>
     </header>
     
     <main>
@@ -61,10 +61,18 @@
         
         <section id="history">
             <h2>Historial de Vehículos Registrados</h2>
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o placa">
+            <button id="searchButton">Buscar</button>
             <button id="toggleHistoryBtn">Mostrar Historial</button>
             <div id="historyContent" style="display: none;">
                 <div id="historyCards">
                     <!-- Las tarjetas de registros se agregarán aquí dinámicamente -->
+                </div>
+            </div>
+            <div id="searchResults" style="display: none;">
+                <h3>Resultados de la Búsqueda</h3>
+                <div id="searchCards">
+                    <!-- Las tarjetas de resultados de búsqueda se agregarán aquí dinámicamente -->
                 </div>
             </div>
         </section>
