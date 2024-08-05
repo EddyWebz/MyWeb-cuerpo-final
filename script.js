@@ -1,3 +1,4 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const vehicleForm = document.getElementById('vehicleForm');
     const plateInput = document.getElementById('plate');
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loadHistory = () => {
         const records = JSON.parse(localStorage.getItem('vehicleRecords')) || [];
-        records.forEach(record => addRecordToCards(record));
+        records.reverse().forEach(record => addRecordToCards(record));
     };
 
     const saveRecord = (record) => {
