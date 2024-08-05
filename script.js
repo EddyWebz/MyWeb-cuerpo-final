@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const vehicleForm = document.getElementById('vehicleForm');
     const plateInput = document.getElementById('plate');
@@ -10,11 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
     const toBase64 = (file) => new Promise((resolve, reject) => {
-        if (file.size > MAX_FILE_SIZE) {
-            reject(new Error("El archivo es demasiado grande"));
-            return;
-        }
-
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
