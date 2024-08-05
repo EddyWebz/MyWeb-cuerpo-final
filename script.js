@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyCards = document.getElementById('historyCards');
     const toggleHistoryBtn = document.getElementById('toggleHistoryBtn');
     const historyContent = document.getElementById('historyContent');
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
+    const searchCards = document.getElementById('searchCards');
     const datetimeInput = document.getElementById('datetime');
 
     const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
@@ -138,9 +142,67 @@ document.addEventListener('DOMContentLoaded', () => {
         datetimeInput.value = formattedDateTime;
     };
 
+    const handleSearch = () => {
+        const query = searchInput.value.toLowerCase();
+        const records = JSON.parse(localStorage.getItem('vehicleRecords')) || [];
+        const filteredRecords = records.filter(record =>
+            record.plate.toLowerCase().includes(query) || record.owner.toLowerCase().includes(query)
+        );
+        
+        searchCards.innerHTML = '';
+        if (filteredRecords.length > 0) {
+            searchResults.style.display = 'block';
+            filteredRecords.forEach(record => addRecordToSearchCards(record));
+        } else {
+            searchResults.style.display = 'none';
+            alert('No se encontraron registros que coincidan con la búsqueda.');
+        }
+    };
+
+    const addRecordToSearchCards = (record) => {
+        const card = document.createElement('div');
+        card.className = 'history-card';
+
+        card.innerHTML = `
+            <div><strong>Fecha y Hora:</strong> ${record.datetime}</div>
+            <div><strong>Marca:</strong> ${record.brand}</div>
+            <div><strong>Modelo:</strong> ${record.model}</div>
+            <div><strong>Clave:</strong> ${record.clave}</div>
+            <div><strong>Placa:</strong> ${record.plate}</div>
+            <div><strong>Color:</strong> ${record.color}</div>
+            <div><strong>Propietario:</strong> ${record.owner}</div>
+            <div><strong>Habitación:</strong> ${record.habitacion}</div>
+            <div><strong>Garaje:</strong> ${record.garage}</div>
+            <div><strong>Observaciones:</strong> ${record.observations}</div>
+            <div><strong>Imágenes:</strong></div>
+        `;
+
+        const imageContainer = document.createElement('div');
+        record.images.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.addEventListener('click', () => openFullscreen(img));
+            imageContainer.appendChild(img);
+        });
+        card.appendChild(imageContainer);
+
+        searchCards.appendChild(card);  // Añadir a los resultados de búsqueda
+    };
+
+    // Nueva funcionalidad para convertir texto a mayúsculas en campos específicos
+    const uppercaseFields = ['brand', 'model', 'clave', 'plate', 'color', 'owner', 'habitacion'];
+
+    uppercaseFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('input', (event) => {
+            event.target.value = event.target.value.toUpperCase();
+        });
+    });
+
     vehicleForm.addEventListener('submit', handleFormSubmit);
     plateInput.addEventListener('input', handlePlateInput);
     toggleHistoryBtn.addEventListener('click', toggleHistoryVisibility);
+    searchButton.addEventListener('click', handleSearch);
 
     setCurrentDateTime();
     loadHistory();
